@@ -3,7 +3,7 @@
 ## 当前文件
 
 - 原始文件：`/Users/anyita/Desktop/Biuty/ToB Dashboard/biuty — Merchant.html`
-- 当前工作副本：`/Users/anyita/Documents/Codex/2026-05-14/files-mentioned-by-the-user-biuty/biuty-merchant.html`
+- 当前工作副本：`/Users/anyita/Documents/Codex/2026-05-14/files-mentioned-by-the-user-biuty/index.html`
 - 类型：单文件 HTML 原型，CSS 和 JavaScript 都内嵌在同一个文件里。
 - 规模：约 2,466 行，181 KB。
 - 外部依赖：Google Fonts `Plus Jakarta Sans`。
@@ -90,6 +90,6 @@ JavaScript 中有两组核心 mock 数据：
 - 修复 Analytics 金额显示。
 - 给 `openModal` / `closeModal` 加基础容错。
 - 把 mock 数据抽出来，统一驱动 dashboard、orders、clients、redeem，减少重复硬编码。
-- 把单文件拆成 `index.html`、`styles.css`、`app.js`，或者迁移成 React/Vue/Svelte 原型。
+- 把当前单文件入口继续拆成 `styles.css`、`app.js`，或者迁移成 React/Vue/Svelte 原型。
 - 做真实响应式适配，尤其是 appointment、client detail、listing editor 这几个复杂页面。
 - 用浏览器跑一轮交互 smoke test，确认每个导航、tab、modal 和主要按钮都能正常工作。
