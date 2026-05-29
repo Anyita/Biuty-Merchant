@@ -553,6 +553,44 @@ td b { color: var(--ink); font-weight: 600; }
   top: 0;
   z-index: 1;
 }
+.client-report-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+.report-toolbar-btn {
+  height: 38px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: var(--r-pill);
+  border: none;
+  font-family: var(--font);
+  font-size: 13px;
+  font-weight: 800;
+  cursor: pointer;
+  padding: 0 16px;
+  transition: background .15s, color .15s, transform .1s;
+}
+.report-toolbar-btn:active { transform: scale(.98); }
+.report-toolbar-secondary {
+  background: var(--bg);
+  color: var(--ink);
+}
+.report-toolbar-secondary:hover {
+  background: var(--ink-10);
+}
+.report-toolbar-primary {
+  background: var(--orange);
+  color: var(--white);
+  box-shadow: 0 10px 22px rgba(132,165,242,.24);
+}
+.report-toolbar-primary:hover { opacity: .9; }
+.report-toolbar-icon {
+  font-size: 15px;
+  line-height: 1;
+}
 .client-report-list {
   padding: 18px 24px 24px;
   display: grid;
@@ -564,6 +602,19 @@ td b { color: var(--ink); font-weight: 600; }
   background: var(--white);
   padding: 18px;
   min-width: 0;
+  cursor: pointer;
+  position: relative;
+  transition: border-color .15s, box-shadow .15s, transform .1s, background .15s;
+}
+.client-report-card:hover {
+  border-color: var(--orange-mid);
+  box-shadow: 0 14px 32px rgba(26,23,20,.06);
+  background: linear-gradient(180deg,#fff,#FDFDFF);
+}
+.client-report-card:active { transform: scale(.998); }
+.client-report-card:focus-visible {
+  outline: 3px solid rgba(132,165,242,.35);
+  outline-offset: 3px;
 }
 .client-report-top {
   display: flex;
@@ -571,6 +622,44 @@ td b { color: var(--ink); font-weight: 600; }
   justify-content: space-between;
   gap: 14px;
   margin-bottom: 16px;
+}
+.client-report-card-tools {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+.report-icon-action {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid var(--ink-10);
+  background: var(--bg);
+  color: var(--ink-60);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font);
+  font-size: 15px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: background .15s, color .15s, border-color .15s, transform .1s;
+}
+.report-icon-action:hover {
+  background: var(--orange-light);
+  border-color: var(--orange-mid);
+  color: var(--orange);
+}
+.report-icon-action:active { transform: scale(.96); }
+.report-open-cue {
+  color: var(--ink-30);
+  font-size: 18px;
+  line-height: 1;
+  transition: transform .15s, color .15s;
+}
+.client-report-card:hover .report-open-cue {
+  color: var(--orange);
+  transform: translateX(2px);
 }
 .client-report-date {
   font-size: 15px;
@@ -622,6 +711,319 @@ td b { color: var(--ink); font-weight: 600; }
   display: grid;
   gap: 12px;
   min-width: 0;
+}
+.client-report-card .report-mini-grid {
+  gap: 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--ink-10);
+}
+.client-report-card .report-mini-card {
+  border: none;
+  background: transparent;
+  border-radius: 0;
+  padding: 0 0 0 10px;
+  border-left: 3px solid var(--orange-light);
+  text-align: left;
+}
+.client-report-card .report-mini-card b {
+  font-size: 12px;
+  margin-bottom: 3px;
+}
+.client-report-card .report-mini-card span {
+  font-size: 11px;
+}
+.modal.compare-modal {
+  width: min(1120px, calc(100vw - 40px));
+  max-height: 92dvh;
+  overflow: hidden;
+}
+.modal-body.compare-body {
+  padding: 0;
+  max-height: calc(92dvh - 78px);
+  overflow-y: auto;
+}
+.compare-toolbar {
+  padding: 20px 28px;
+  border-bottom: 1px solid var(--ink-10);
+  background: linear-gradient(135deg,#F7F9FF,#FFF8FB);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  gap: 14px;
+  align-items: center;
+}
+.compare-select-card {
+  border: 1px solid var(--ink-10);
+  border-radius: var(--r-sm);
+  background: rgba(255,255,255,.82);
+  padding: 12px 14px;
+  min-width: 0;
+}
+.compare-select-card label {
+  display: block;
+  font-size: 10px;
+  letter-spacing: 1.1px;
+  text-transform: uppercase;
+  color: var(--ink-30);
+  font-weight: 800;
+  margin-bottom: 7px;
+}
+.compare-select {
+  width: 100%;
+  border: none;
+  background: transparent;
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: 16px;
+  font-weight: 800;
+  outline: none;
+}
+.compare-vs {
+  color: var(--ink-30);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1.4px;
+}
+.compare-hint {
+  grid-column: 1 / -1;
+  color: var(--ink-60);
+  font-size: 12px;
+  line-height: 1.4;
+  text-align: center;
+}
+.compare-shell {
+  padding: 24px 28px 30px;
+  display: grid;
+  grid-template-columns: minmax(420px, 1.05fr) minmax(0, .95fr);
+  gap: 22px;
+}
+.compare-column {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  min-width: 0;
+}
+.compare-section-title {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--ink);
+  margin-bottom: 12px;
+}
+.compare-visual-card,
+.compare-analysis-card,
+.compare-insight-card,
+.compare-tip-card {
+  border: 1px solid var(--ink-10);
+  border-radius: var(--r-sm);
+  background: var(--white);
+  padding: 18px;
+  min-width: 0;
+}
+.compare-mode-tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+  padding: 4px;
+  background: var(--bg);
+  border-radius: var(--r-pill);
+  margin-bottom: 14px;
+}
+.compare-mode-btn {
+  border: none;
+  border-radius: var(--r-pill);
+  background: transparent;
+  color: var(--ink);
+  padding: 9px 12px;
+  font-family: var(--font);
+  font-size: 13px;
+  font-weight: 800;
+  cursor: pointer;
+}
+.compare-mode-btn.active {
+  background: var(--ink);
+  color: var(--white);
+}
+.compare-stage {
+  position: relative;
+  min-height: 420px;
+  border-radius: var(--r-sm);
+  overflow: hidden;
+  background: #f4d1c4;
+  border: 1px solid var(--ink-10);
+}
+.compare-photo {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 50% 24%, rgba(70,38,24,.18) 0 11%, transparent 12%),
+    radial-gradient(ellipse at 45% 36%, rgba(25,18,15,.72) 0 8%, transparent 9%),
+    radial-gradient(ellipse at 63% 62%, rgba(200,73,96,.36) 0 7%, transparent 8%),
+    radial-gradient(ellipse at 58% 48%, rgba(120,70,50,.18) 0 8%, transparent 9%),
+    linear-gradient(105deg,#331d17 0 9%,#e8b9a9 10% 54%,#f1c5b7 55% 100%);
+}
+.compare-photo.after {
+  filter: saturate(.95) brightness(1.04);
+  background:
+    radial-gradient(ellipse at 50% 24%, rgba(70,38,24,.14) 0 10%, transparent 11%),
+    radial-gradient(ellipse at 45% 36%, rgba(25,18,15,.68) 0 8%, transparent 9%),
+    radial-gradient(ellipse at 64% 62%, rgba(200,73,96,.22) 0 6%, transparent 7%),
+    radial-gradient(ellipse at 58% 48%, rgba(120,70,50,.1) 0 8%, transparent 9%),
+    linear-gradient(105deg,#2e1a15 0 9%,#efc4b5 10% 54%,#f6d1c4 55% 100%);
+}
+.compare-split.after {
+  clip-path: inset(0 0 0 var(--compare-split, 50%));
+}
+.compare-divider {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: var(--compare-split, 50%);
+  width: 3px;
+  transform: translateX(-1.5px);
+  background: var(--white);
+  box-shadow: 0 0 0 1px rgba(255,255,255,.75);
+}
+.compare-handle {
+  position: absolute;
+  left: var(--compare-split, 50%);
+  bottom: 14px;
+  transform: translateX(-50%);
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--white);
+  display: grid;
+  place-items: center;
+  font-size: 18px;
+  color: var(--ink);
+  box-shadow: 0 10px 24px rgba(26,23,20,.18);
+}
+.compare-photo-label {
+  position: absolute;
+  top: 14px;
+  z-index: 2;
+  font-size: 12px;
+  color: rgba(26,23,20,.62);
+  font-weight: 700;
+}
+.compare-photo-label.before { left: 14px; }
+.compare-photo-label.after { right: 14px; }
+.compare-range {
+  width: 100%;
+  margin-top: 12px;
+  accent-color: var(--ink);
+}
+.compare-side-stage {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  background: transparent;
+  border: none;
+  min-height: 420px;
+}
+.compare-side-stage .compare-side-shot {
+  position: relative;
+  border-radius: var(--r-sm);
+  overflow: hidden;
+  border: 1px solid var(--ink-10);
+  min-height: 420px;
+}
+.compare-side-stage .compare-photo {
+  position: absolute;
+}
+.compare-summary {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+.compare-summary-item {
+  border-radius: var(--r-xs);
+  background: var(--bg);
+  padding: 14px;
+  min-width: 0;
+}
+.compare-summary-item strong {
+  display: block;
+  color: var(--orange);
+  font-size: 24px;
+  line-height: 1;
+  margin-bottom: 7px;
+}
+.compare-summary-item span {
+  color: var(--ink-60);
+  font-size: 11px;
+  font-weight: 800;
+}
+.compare-trend-title {
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -.4px;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+.compare-trend-title span {
+  color: var(--orange);
+}
+.compare-trend-copy {
+  color: var(--ink-60);
+  font-size: 13px;
+  line-height: 1.5;
+  margin-bottom: 16px;
+}
+.compare-chart {
+  height: 150px;
+  border-radius: var(--r-xs);
+  background:
+    radial-gradient(circle at 34% 70%, var(--orange) 0 7px, transparent 8px),
+    radial-gradient(circle at 76% 30%, var(--orange) 0 7px, transparent 8px),
+    linear-gradient(180deg, rgba(132,165,242,.18), rgba(132,165,242,0));
+  position: relative;
+  overflow: hidden;
+}
+.compare-chart::before {
+  content: "";
+  position: absolute;
+  left: 20px;
+  right: 20px;
+  top: 74px;
+  height: 58px;
+  border-top: 4px solid var(--orange);
+  border-radius: 55% 45% 0 0;
+  transform: rotate(-7deg);
+  opacity: .9;
+}
+.compare-chart-label {
+  position: absolute;
+  font-size: 12px;
+  color: var(--orange);
+  background: var(--white);
+  border-radius: var(--r-pill);
+  padding: 5px 8px;
+  font-weight: 800;
+  box-shadow: 0 8px 18px rgba(132,165,242,.18);
+}
+.compare-chart-label.before { left: 27%; top: 62%; }
+.compare-chart-label.after { right: 18%; top: 17%; }
+.compare-insight-card {
+  background: var(--blue-light);
+}
+.compare-mini-card {
+  background: var(--white);
+  border-radius: var(--r-xs);
+  padding: 14px;
+  margin-top: 10px;
+}
+.compare-mini-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+.compare-tip-card {
+  background: linear-gradient(135deg,#FFF,#FAFAFF);
 }
 .flag-editor-list {
   display: flex;
@@ -1950,6 +2352,18 @@ table { min-width: 680px; }
   .skin-report-summary {
     grid-template-columns: 1fr;
   }
+  .compare-toolbar,
+  .compare-shell {
+    grid-template-columns: 1fr;
+  }
+  .compare-vs {
+    text-align: center;
+  }
+  .compare-side-stage,
+  .compare-side-stage .compare-side-shot,
+  .compare-stage {
+    min-height: 360px;
+  }
   .scan-camera-preview { min-height: 440px; }
 }
 
@@ -2042,8 +2456,36 @@ table { min-width: 680px; }
     flex-wrap: wrap;
     align-items: flex-start;
   }
+  .client-report-actions {
+    width: 100%;
+    justify-content: flex-start;
+  }
+  .client-report-card-tools {
+    margin-left: auto;
+  }
+  .report-toolbar-btn {
+    flex: 1;
+    justify-content: center;
+  }
   .client-report-body {
     grid-template-columns: 1fr;
+  }
+  .compare-toolbar {
+    padding: 16px;
+  }
+  .compare-shell {
+    padding: 18px 16px 22px;
+  }
+  .compare-summary {
+    grid-template-columns: 1fr;
+  }
+  .compare-side-stage {
+    grid-template-columns: 1fr;
+  }
+  .compare-side-stage,
+  .compare-side-stage .compare-side-shot,
+  .compare-stage {
+    min-height: 320px;
   }
   .order-filter {
     max-width: 100%;
@@ -2745,7 +3187,16 @@ table { min-width: 680px; }
                 <div style="font-size:15px;font-weight:700;color:var(--ink);">Skin Reports</div>
                 <div style="font-size:12px;color:var(--ink-60);margin-top:2px;" id="client-report-sub">All skin scan reports, newest first</div>
               </div>
-              <button class="btn btn-outline btn-sm" onclick="nav('skinscan')">New Scan</button>
+              <div class="client-report-actions">
+                <button class="report-toolbar-btn report-toolbar-secondary" onclick="openSkinCompare(CLIENTS[currentClientIndex].av, 0)" title="Compare reports">
+                  <span class="report-toolbar-icon" aria-hidden="true">⇄</span>
+                  Compare
+                </button>
+                <button class="report-toolbar-btn report-toolbar-primary" onclick="openSkinScanClientPicker(CLIENTS[currentClientIndex].av)" title="New skin scan">
+                  <span class="report-toolbar-icon" aria-hidden="true">⌖</span>
+                  New Scan
+                </button>
+              </div>
             </div>
             <div id="client-report-list" class="client-report-list"></div>
           </div>
@@ -3430,6 +3881,20 @@ Post-care guidance kit</textarea></div>
   </div>
 </div>
 
+<!-- MODAL: SKIN REPORT COMPARE -->
+<div class="modal-bg" id="modal-skin-compare">
+  <div class="modal compare-modal">
+    <div class="modal-head">
+      <div>
+        <div class="modal-title">Compare Skin Reports</div>
+        <div style="font-size:12px;color:var(--ink-60);margin-top:2px;" id="compare-report-subtitle">Select two reports to compare</div>
+      </div>
+      <button class="modal-x" onclick="closeModal('modal-skin-compare')">✕</button>
+    </div>
+    <div class="modal-body compare-body" id="compare-report-body"></div>
+  </div>
+</div>
+
 <!-- MODAL: REFUND FLOW -->
 <div class="modal-bg" id="modal-refund-flow">
   <div class="modal" style="width:560px;">
@@ -3651,28 +4116,28 @@ Post-care guidance kit</textarea></div>
       </div>
       <!-- Client list -->
       <div id="scan-client-list" style="display:flex;flex-direction:column;gap:6px;max-height:280px;overflow-y:auto;margin-bottom:16px;">
-        <div class="scan-client-row" onclick="chooseScanClient(this,'Sarah Lim','SL','var(--orange-light)','var(--orange)')">
+        <div class="scan-client-row" data-client-av="SL" onclick="chooseScanClient(this,'Sarah Lim','SL','var(--orange-light)','var(--orange)')">
           <div style="width:36px;height:36px;border-radius:50%;background:var(--orange-light);color:var(--orange);font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;">SL</div>
           <div style="flex:1;"><div style="font-size:13px;font-weight:600;color:var(--ink);">Sarah Lim</div><div style="font-size:11px;color:var(--ink-60);">Last scan: 25 Apr 2026 · Score 86</div></div>
           <span class="badge b-orange" style="font-size:10px;">VIP</span>
         </div>
-        <div class="scan-client-row" onclick="chooseScanClient(this,'Mei Ying','MY','var(--blue-light)','var(--blue)')">
+        <div class="scan-client-row" data-client-av="MY" onclick="chooseScanClient(this,'Mei Ying','MY','var(--blue-light)','var(--blue)')">
           <div style="width:36px;height:36px;border-radius:50%;background:var(--blue-light);color:var(--blue);font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;">MY</div>
           <div style="flex:1;"><div style="font-size:13px;font-weight:600;color:var(--ink);">Mei Ying</div><div style="font-size:11px;color:var(--ink-60);">Last scan: 22 Apr 2026 · Score 74</div></div>
         </div>
-        <div class="scan-client-row" onclick="chooseScanClient(this,'Aisha Rahman','AR','var(--green-light)','var(--green)')">
+        <div class="scan-client-row" data-client-av="AR" onclick="chooseScanClient(this,'Aisha Rahman','AR','var(--green-light)','var(--green)')">
           <div style="width:36px;height:36px;border-radius:50%;background:var(--green-light);color:var(--green);font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;">AR</div>
           <div style="flex:1;"><div style="font-size:13px;font-weight:600;color:var(--ink);">Aisha Rahman</div><div style="font-size:11px;color:var(--ink-60);">Last scan: 20 Apr 2026 · Score 79</div></div>
         </div>
-        <div class="scan-client-row" onclick="chooseScanClient(this,'Priya Nair','PN','var(--amber-light)','var(--amber)')">
+        <div class="scan-client-row" data-client-av="PN" onclick="chooseScanClient(this,'Priya Nair','PN','var(--amber-light)','var(--amber)')">
           <div style="width:36px;height:36px;border-radius:50%;background:var(--amber-light);color:var(--amber);font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;">PN</div>
           <div style="flex:1;"><div style="font-size:13px;font-weight:600;color:var(--ink);">Priya Nair</div><div style="font-size:11px;color:var(--ink-60);">Last scan: 18 Apr 2026 · Score 68</div></div>
         </div>
-        <div class="scan-client-row" onclick="chooseScanClient(this,'Linda Tan','LT','var(--bg)','var(--ink-60)')">
+        <div class="scan-client-row" data-client-av="LT" onclick="chooseScanClient(this,'Linda Tan','LT','var(--bg)','var(--ink-60)')">
           <div style="width:36px;height:36px;border-radius:50%;background:var(--bg);color:var(--ink-60);font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;">LT</div>
           <div style="flex:1;"><div style="font-size:13px;font-weight:600;color:var(--ink);">Linda Tan</div><div style="font-size:11px;color:var(--ink-60);">No prior scan</div></div>
         </div>
-        <div class="scan-client-row" onclick="chooseScanClient(this,'Nurul Ain','NA','#FCEEF4','var(--orange)')">
+        <div class="scan-client-row" data-client-av="NA" onclick="chooseScanClient(this,'Nurul Ain','NA','#FCEEF4','var(--orange)')">
           <div style="width:36px;height:36px;border-radius:50%;background:#FCEEF4;color:var(--orange);font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;">NA</div>
           <div style="flex:1;"><div style="font-size:13px;font-weight:600;color:var(--ink);">Nurul Ain</div><div style="font-size:11px;color:var(--ink-60);">No prior scan</div></div>
         </div>
@@ -4659,6 +5124,17 @@ function reportCardInsights(report, client) {
   ];
 }
 
+function openClientReportCard(event, clientAv, reportIndex) {
+  if (event && event.target.closest('button')) return;
+  openRelatedReportList(clientAv, reportIndex);
+}
+
+function handleClientReportCardKey(event, clientAv, reportIndex) {
+  if (event.key !== 'Enter' && event.key !== ' ') return;
+  event.preventDefault();
+  openRelatedReportList(clientAv, reportIndex);
+}
+
 function renderClientSkinReports() {
   const c = CLIENTS[currentClientIndex];
   const list = document.getElementById('client-report-list');
@@ -4674,13 +5150,16 @@ function renderClientSkinReports() {
   }
 
   list.innerHTML = reports.map((report, idx) => `
-    <article class="client-report-card">
+    <article class="client-report-card" role="button" tabindex="0" aria-label="View skin report from ${escapeHtml(report.date)}" onclick="openClientReportCard(event, '${c.av}', ${idx})" onkeydown="handleClientReportCardKey(event, '${c.av}', ${idx})">
       <div class="client-report-top">
         <div>
           <div class="client-report-date">${escapeHtml(report.date)}</div>
           <div class="client-report-note">${escapeHtml(report.note)}</div>
         </div>
-        <button class="btn btn-outline btn-xs" onclick="openRelatedReportList('${c.av}', ${idx})">View report</button>
+        <div class="client-report-card-tools">
+          <button class="report-icon-action" onclick="event.stopPropagation();openSkinCompare('${c.av}', ${idx})" title="Compare this report" aria-label="Compare skin report from ${escapeHtml(report.date)}">⇄</button>
+          <span class="report-open-cue" aria-hidden="true">›</span>
+        </div>
       </div>
       <div class="client-report-body">
         <div class="client-report-score">
@@ -4704,6 +5183,191 @@ function renderClientSkinReports() {
       </div>
     </article>
   `).join('');
+}
+
+function comparePairForIndex(reports, primaryIndex = 0) {
+  if (reports.length <= 1) return { beforeIndex: 0, afterIndex: 0 };
+  if (primaryIndex <= 0) return { beforeIndex: 1, afterIndex: 0 };
+  return { beforeIndex: primaryIndex, afterIndex: Math.max(0, primaryIndex - 1) };
+}
+
+function compareInsights(before, after, client) {
+  const scoreDelta = after.score - before.score;
+  const ageDelta = after.skinAge - before.skinAge;
+  const concerns = client.skin && client.skin.length ? client.skin.join(', ') : 'No concern tags recorded';
+  return {
+    improvements:[
+      scoreDelta >= 0 ? `Skin score increased by ${scoreDelta} points between scans.` : `Skin score dropped by ${Math.abs(scoreDelta)} points and needs follow-up.`,
+      'Tone appears more even, with lower visible redness around the cheek area.',
+      'Hydration and texture look more stable based on the latest scan.'
+    ],
+    concerns:[
+      ageDelta > 0 ? `Skin age increased by ${ageDelta}; review sleep, SPF, and aftercare adherence.` : 'Fine lines and dark circles should still be monitored at the next visit.',
+      `Current profile tags: ${concerns}.`
+    ],
+    tips:[
+      'Ask the client what changed in homecare between these two scans.',
+      'Use this comparison during consultation to explain treatment progress and next steps.'
+    ]
+  };
+}
+
+function compareOptions(reports, selectedIndex) {
+  return reports.map((report, idx) => `
+    <option value="${idx}" ${idx === selectedIndex ? 'selected' : ''}>${escapeHtml(report.date)} · Score ${report.score}</option>
+  `).join('');
+}
+
+function renderCompareStage(mode, split = 50) {
+  if (mode === 'side') {
+    return `
+      <div class="compare-stage compare-side-stage">
+        <div class="compare-side-shot">
+          <div class="compare-photo"></div>
+          <div class="compare-photo-label before">Before</div>
+        </div>
+        <div class="compare-side-shot">
+          <div class="compare-photo after"></div>
+          <div class="compare-photo-label after">After</div>
+        </div>
+      </div>
+    `;
+  }
+  return `
+    <div class="compare-stage" id="compare-stage" style="--compare-split:${split}%;">
+      <div class="compare-photo"></div>
+      <div class="compare-photo after compare-split"></div>
+      <div class="compare-photo-label before">Before</div>
+      <div class="compare-photo-label after">After</div>
+      <div class="compare-divider"></div>
+      <div class="compare-handle">‹›</div>
+    </div>
+    <input class="compare-range" type="range" min="20" max="80" value="${split}" oninput="setCompareSplit(this.value)">
+  `;
+}
+
+function renderSkinCompare(clientAv, beforeIndex, afterIndex, mode = 'slider') {
+  const client = CLIENTS.find(c => c.av === clientAv) || CLIENTS[currentClientIndex];
+  const reports = reportListForClient(client);
+  const before = reports[beforeIndex] || reports[0];
+  const after = reports[afterIndex] || reports[0];
+  const scoreDelta = after.score - before.score;
+  const ageDelta = after.skinAge - before.skinAge;
+  const scoreText = `${scoreDelta >= 0 ? '+' : ''}${scoreDelta}`;
+  const scorePercent = before.score ? Math.round((scoreDelta / before.score) * 100) : 0;
+  const trendText = scoreDelta >= 0 ? `+${scorePercent}% ↑` : `${scorePercent}% ↓`;
+  const ageText = ageDelta === 0 ? 'No change' : `${ageDelta > 0 ? '+' : ''}${ageDelta}`;
+  const insights = compareInsights(before, after, client);
+  const subtitle = document.getElementById('compare-report-subtitle');
+  if (subtitle) subtitle.textContent = `${client.name} · ${reports.length} reports`;
+
+  return `
+    <div class="compare-toolbar">
+      <div class="compare-select-card">
+        <label>Before</label>
+        <select class="compare-select" id="compare-before-select" onchange="updateSkinCompare('${client.av}')">
+          ${compareOptions(reports, beforeIndex)}
+        </select>
+      </div>
+      <div class="compare-vs">VS</div>
+      <div class="compare-select-card">
+        <label>After</label>
+        <select class="compare-select" id="compare-after-select" onchange="updateSkinCompare('${client.av}')">
+          ${compareOptions(reports, afterIndex)}
+        </select>
+      </div>
+      <div class="compare-hint">Best results usually show with 7 to 90 days between records. Use this view during client consultation and treatment review.</div>
+    </div>
+    <div class="compare-shell">
+      <div class="compare-column">
+        <section>
+          <div class="compare-section-title">Before & After</div>
+          <div class="compare-visual-card">
+            <div class="compare-mode-tabs">
+              <button class="compare-mode-btn ${mode === 'slider' ? 'active' : ''}" onclick="setCompareMode('${client.av}', 'slider')">Slider</button>
+              <button class="compare-mode-btn ${mode === 'side' ? 'active' : ''}" onclick="setCompareMode('${client.av}', 'side')">Side-by-Side</button>
+            </div>
+            ${renderCompareStage(mode)}
+          </div>
+        </section>
+        <section class="compare-insight-card">
+          <div class="compare-section-title">Insights</div>
+          <div class="compare-mini-card">
+            <div class="compare-mini-title"><span>Improvements</span><span>👍</span></div>
+            ${detailBullets(insights.improvements)}
+          </div>
+          <div class="compare-mini-card">
+            <div class="compare-mini-title"><span>Concerns</span><span>!</span></div>
+            ${detailBullets(insights.concerns)}
+          </div>
+        </section>
+      </div>
+      <div class="compare-column">
+        <section class="compare-analysis-card">
+          <div class="compare-section-title">AI Analysis</div>
+          <div class="compare-trend-title">Overall Trend: <span>${trendText}</span></div>
+          <div class="compare-trend-copy">
+            ${scoreDelta >= 0
+              ? 'Wonderful. The latest scan shows positive progress, especially in tone, hydration, and visible texture.'
+              : 'The latest scan is lower than the selected baseline. Review treatment timing, homecare consistency, and recent irritation triggers.'}
+          </div>
+          <div class="compare-summary">
+            <div class="compare-summary-item"><strong>${scoreText}</strong><span>Score change</span></div>
+            <div class="compare-summary-item"><strong>${ageText}</strong><span>Skin age</span></div>
+            <div class="compare-summary-item"><strong>${after.score}</strong><span>Latest score</span></div>
+          </div>
+          <div class="compare-chart">
+            <div class="compare-chart-label before">${before.score}</div>
+            <div class="compare-chart-label after">${after.score}</div>
+          </div>
+        </section>
+        <section class="compare-tip-card">
+          <div class="compare-section-title">Staff Tips</div>
+          ${detailBullets(insights.tips)}
+        </section>
+        <section class="compare-analysis-card">
+          <div class="compare-section-title">Report Context</div>
+          ${detailRows([
+            {label:'Before scan', value:`${before.date} · ${before.note}`},
+            {label:'After scan', value:`${after.date} · ${after.note}`},
+            {label:'Client tags', value:(client.skin || []).join(', ') || 'None'},
+            {label:'Recommended action', value:scoreDelta >= 0 ? 'Use progress proof in consultation and maintain care plan.' : 'Schedule follow-up scan and review aftercare barriers.'}
+          ])}
+        </section>
+      </div>
+    </div>
+  `;
+}
+
+function openSkinCompare(clientAv, primaryIndex = 0) {
+  const client = CLIENTS.find(c => c.av === clientAv) || CLIENTS[currentClientIndex];
+  const reports = reportListForClient(client);
+  const pair = comparePairForIndex(reports, primaryIndex);
+  const body = document.getElementById('compare-report-body');
+  if (body) body.innerHTML = renderSkinCompare(client.av, pair.beforeIndex, pair.afterIndex, 'slider');
+  openModal('modal-skin-compare');
+}
+
+function updateSkinCompare(clientAv) {
+  const beforeSelect = document.getElementById('compare-before-select');
+  const afterSelect = document.getElementById('compare-after-select');
+  const activeMode = document.querySelector('#compare-report-body .compare-mode-btn.active')?.textContent.includes('Side') ? 'side' : 'slider';
+  const body = document.getElementById('compare-report-body');
+  if (!beforeSelect || !afterSelect || !body) return;
+  body.innerHTML = renderSkinCompare(clientAv, Number(beforeSelect.value), Number(afterSelect.value), activeMode);
+}
+
+function setCompareMode(clientAv, mode) {
+  const beforeSelect = document.getElementById('compare-before-select');
+  const afterSelect = document.getElementById('compare-after-select');
+  const body = document.getElementById('compare-report-body');
+  if (!beforeSelect || !afterSelect || !body) return;
+  body.innerHTML = renderSkinCompare(clientAv, Number(beforeSelect.value), Number(afterSelect.value), mode);
+}
+
+function setCompareSplit(value) {
+  const stage = document.getElementById('compare-stage');
+  if (stage) stage.style.setProperty('--compare-split', `${value}%`);
 }
 
 function renderRelatedReportPane(clientAv, reportIndex = 0, mode = 'overall') {
@@ -5210,7 +5874,7 @@ selectClient(document.querySelector('.cl-row'), 0);
 // ── SKIN SCAN ──
 let selectedScanClient = null;
 
-function openSkinScanClientPicker() {
+function openSkinScanClientPicker(clientAv = null) {
   selectedScanClient = null;
   document.querySelectorAll('.scan-client-row').forEach(r => {
     r.classList.remove('selected');
@@ -5222,6 +5886,15 @@ function openSkinScanClientPicker() {
   if (label) label.textContent = 'Select a client to continue';
   const btn = document.getElementById('scan-start-btn');
   if (btn) btn.disabled = true;
+
+  if (clientAv) {
+    const client = CLIENTS.find(c => c.av === clientAv);
+    const row = document.querySelector(`#scan-client-list .scan-client-row[data-client-av="${clientAv}"]`);
+    if (client && row) {
+      chooseScanClient(row, client.name, client.av, client.col, client.tc);
+    }
+  }
+
   openModal('modal-skin-scan-select');
 }
 
